@@ -11,8 +11,8 @@ semanticdb
 url
 ede-projects.el
 .DS_Store
-custom.el
 places
 .smex-items
 savefile/
 /prelude-modules.el
+projectile.cache
