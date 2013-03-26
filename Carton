@@ -1,3 +1,4 @@
+(source "marmalade" "http://marmalade-repo.org/packages/")
 (source "melpa" "http://melpa.milkbox.net/packages/")
 (source "gnu" "http://elpa.gnu.org/packages/")
 
@@ -7,6 +8,7 @@
 (depends-on "carton")
 (depends-on "cl-lib")
 (depends-on "cyberpunk-theme")
+(depends-on "cygwin-mount")
 (depends-on "dash")
 (depends-on "diminish")
 (depends-on "elisp-slime-nav")

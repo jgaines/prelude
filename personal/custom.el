@@ -13,6 +13,8 @@
  '(menu-bar-mode t)
  '(pallet-repack-on-close t)
  '(tool-bar-mode t)
+ '(woman-locale "en_US")
+ '(tab-width 4)
  '(transient-mark-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

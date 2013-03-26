@@ -16,3 +16,4 @@ places
 savefile/
 /prelude-modules.el
 projectile.cache
+tramp
