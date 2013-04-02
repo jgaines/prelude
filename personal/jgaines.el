@@ -28,7 +28,7 @@
 ;; manually, add a (when (package-installed-p 'foo) (add-to-list ...))
 ;; block after this.
 (defvar jgaines-auto-install-alist
-  '(("\\.fs\\'" fsharp-mode fsharp-mode)
+  '(("\\.fs[iylx]\\'" fsharp-mode fsharp-mode)
     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
     ("\\.cmake\\'" cmake-mode cmake-mode)
     ("\\.\\(cmd\\|bat\\)\\'" ntcmd ntcmd-mode)
@@ -113,6 +113,48 @@ case-insensitive comparrison."
                     '("\\`ccarc[1-4]\\'" nil "scpx")) 
        (add-to-list 'tramp-default-method-alist
                     '("\\`Lmm3\\'" nil "scpx"))))
+
+  ;; This lets woman (emacs built-in man clone) find all the man files
+  ;; I've got scattered all over my machine.
+  (setq woman-manpath
+		'(
+		  "c:/cygwin/usr/share/man"
+		  "c:/cygwin/usr/share/doc/man"
+		  "c:/cygwin/usr/ssl/man"
+		  "c:/cygwin/usr/share/texmf/doc/man"
+		  "c:/chicken/man"
+		  "c:/chicken/share/man"
+		  "c:/D/dmd2/man"
+		  "c:/Ruby/v1.9.3-p0/share/man"
+		  "c:/Program Files (x86)/DreamPie/share/man"
+		  "c:/Program Files/erl5.10.1/erts-5.10.1/man"
+		  "c:/Python27/man"
+		  "c:/Python27/share/man"
+		  "c:/projects/gtk/man"
+		  "c:/projects/gtk/share/man"
+		  "c:/cygwin/usr/man"
+		  "c:/cygwin/usr/X11R6/share/man"
+		  "c:/cygwin/usr/X11R6/man"
+		  "c:/cygwin/usr/local/share/man"
+		  "c:/cygwin/usr/local/man"
+		  "c:/cygwin/opt/gnome/man"
+		  "c:/cygwin/usr/i686-pc-mingw32/sys-root/mingw/share/man"
+		  "c:/cygwin/usr/local/mercury-11.01/man"
+		  "c:/msysgit/mingw/man"
+		  "c:/msysgit/mingw/share/man"
+		  ))
+
+  (add-to-list 'load-path
+			   "C:/Program Files (x86)/Gambit-C/v4.6.7-gcc/share/emacs/site-lisp")
+  (autoload 'gambit-inferior-mode
+	"gambit" "Hook Gambit mode into cmuscheme.")
+  (autoload 'gambit-mode
+	"gambit" "Hook Gambit mode into scheme.")
+  (add-hook 'inferior-scheme-mode-hook
+			(function gambit-inferior-mode))
+  (add-hook 'scheme-mode-hook
+			(function gambit-mode))
+  (setq scheme-program-name "gsi -:d-")
 
   ;; Setup up emacs-w3m package.
   ;; (add-to-list 'load-path

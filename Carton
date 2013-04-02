@@ -14,6 +14,7 @@
 (depends-on "elisp-slime-nav")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
+(depends-on "fic-ext-mode")
 (depends-on "flycheck")
 (depends-on "fsharp-mode")
 (depends-on "gh")
