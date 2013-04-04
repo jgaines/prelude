@@ -13,7 +13,6 @@
  '(highlight-tail-colors (quote (("#eee8d5" . 0) ("#B4C342" . 20) ("#69CABF" . 30) ("#69B7F0" . 50) ("#DEB542" . 60) ("#F2804F" . 70) ("#F771AC" . 85) ("#eee8d5" . 100))))
  '(inhibit-startup-screen nil)
  '(menu-bar-mode t)
- '(pallet-repack-on-close t)
  '(tab-width 4)
  '(tool-bar-mode t)
  '(transient-mark-mode t)
