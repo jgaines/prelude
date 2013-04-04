@@ -5,6 +5,7 @@
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
 (depends-on "anti-zenburn-theme")
+(depends-on "auto-complete")
 (depends-on "carton")
 (depends-on "cl-lib")
 (depends-on "cyberpunk-theme")

@@ -18,7 +18,9 @@
     (package-install p)))
 
 (when (package-installed-p 'pallet)
-  (require 'pallet))
+  (require 'pallet)
+  (when (not (package-installed-p 'rainbow-delimiters))
+	(pallet-install)))
 
 
 ;; Add a few more auto-installed modes
