@@ -62,7 +62,14 @@
       c-tab-always-indent nil
       perl-tab-always-indent nil)
 
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
 
+(defun force-tabs-to-eight ()
+  (setq tab-width 8))
+
+(add-hook 'comint-mode-hook 'force-tabs-to-eight)
 
 ;;; Major environment settings here, hopefully I can limit Cygwin
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
