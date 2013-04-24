@@ -12,32 +12,26 @@
 (defvar jgaines-required-packages '(carton pallet))
 
 
-;; Make sure carton & pallet are installed
+;;; Make sure carton & pallet are installed
 (dolist (p jgaines-required-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
-(when (package-installed-p 'pallet)
-  (require 'pallet)
-  (when (not (package-installed-p 'rainbow-delimiters))
-	(pallet-install)))
+;;; Run pallet-install to make sure we have all packages installed.
+(require 'pallet)
+(pallet-install)
 
 
-;; Add a few more auto-installed modes
-;; Format is (extension package mode)
-;; NOTE: This does not do anything if the package is already
-;; installed, so if a package needs to be added to auto-mode-list
-;; manually, add a (when (package-installed-p 'foo) (add-to-list ...))
-;; block after this.
+;;; Add a few more auto-installed modes
+;;; Format is (extension package mode)
+;;; NOTE: This does not do anything if the package is already
+;;; installed, so if a package needs to be added to auto-mode-list
+;;; manually, add a (when (package-installed-p 'foo) (add-to-list
+;;; ...)) block after this.
 (defvar jgaines-auto-install-alist
-  '(("\\.fs[iylx]\\'" fsharp-mode fsharp-mode)
+  '(
     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
     ("\\.cmake\\'" cmake-mode cmake-mode)
-    ("\\.\\(cmd\\|bat\\)\\'" ntcmd ntcmd-mode)
-    ("\\.gradle\\'" groovy-mode groovy-mode)
-    ("\\.[Cc][Ss][Vv]\\'" csv-mode csv-mode)
-    ("\\.cron\\(tab\\)?\\'" crontab-mode crontab-mode)
-    ("cron\\(tab\\)?\\." crontab-mode crontab-mode)
     ))
 
 (-each jgaines-auto-install-alist
@@ -48,9 +42,33 @@
            (unless (package-installed-p package)
              (prelude-auto-install extension package mode)))))
 
+(when (package-installed-p 'cmake-mode)
+  (autoload 'cmake-mode "cmake-mode" "\
+Major mode for editing CMake files.
+
+The hook `cmake-mode-hook' is run with no args at mode
+initialization.
+
+\(fn)" t nil)
+  (add-to-list 'auto-mode-alist
+			   '("CMakeLists\\.txt\\'" . cmake-mode))
+  (add-to-list 'auto-mode-alist
+			   '("\\.cmake\\'" . cmake-mode)))
+
+(when (package-installed-p 'crontab-mode)
+  (add-to-list 'auto-mode-alist
+			   '("\\.cron\\(tab\\)?\\'" . crontab-mode))
+  (add-to-list 'auto-mode-alist
+			   '("cron\\(tab\\)?\\." . crontab-mode)))
+
+(when (package-installed-p 'groovy-mode)
+  (add-to-list 'auto-mode-alist
+			   '("\\.gradle\\'" groovy-mode groovy-mode)))
+
 ;; ntcmd doesn't set up auto-modes
-(add-to-list 'auto-mode-alist
-             '("\\.\\(cmd\\|bat\\)\\'" . ntcmd-mode))
+(when (package-installed-p 'ntcmd)
+  (add-to-list 'auto-mode-alist
+			   '("\\.\\(cmd\\|bat\\)\\'" . ntcmd-mode)))
 
 ;; These modes are part of the std load for 24.x
 (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
@@ -62,13 +80,15 @@
       c-tab-always-indent nil
       perl-tab-always-indent nil)
 
+;;; Use smex for M-x, Cuz smex ain't toopid!
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+;;; Forces tabs to 8 spaces in all comint derived modes (shells,
+;;; compiler, etc.)
 (defun force-tabs-to-eight ()
   (setq tab-width 8))
-
 (add-hook 'comint-mode-hook 'force-tabs-to-eight)
 
 ;;; Major environment settings here, hopefully I can limit Cygwin
