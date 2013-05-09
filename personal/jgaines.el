@@ -155,10 +155,11 @@ case-insensitive comparrison."
   (eval-after-load 'tramp
     '(progn
        (setq tramp-default-method "sshx")
-       (add-to-list 'tramp-default-method-alist
-                    '("\\`ccarc[1-4]\\'" nil "scpx")) 
-       (add-to-list 'tramp-default-method-alist
-                    '("\\`Lmm3\\'" nil "scpx"))))
+       ;(add-to-list 'tramp-default-method-alist
+       ;             '("\\`ccarc[1-4]\\'" nil "scpx"))
+       ;(add-to-list 'tramp-default-method-alist
+       ;             '("\\`lmm3\\'" nil "scpx"))
+	   ))
 
   ;; This lets woman (emacs built-in man clone) find all the man files
   ;; I've got scattered all over my machine.
@@ -228,7 +229,7 @@ case-insensitive comparrison."
   ;;   HKCU\SOFTWARE\GNU\Emacs\LANG
   ;;   HKCU\SOFTWARE\GNU\Emacs\PRELOAD_WINSOCK
   ;; Load order is environment, HKCU, HKLM, compiled-in defaults.
-  
+
   (add-to-list 'exec-path "C:/Program Files (x86)/PuTTY/" nil 'path-equal)
   (setq tramp-default-method "pscp")
   (setq-default ispell-program-name "C:/Program Files (x86)/aspell/bin/aspell")
