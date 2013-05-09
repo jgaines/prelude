@@ -39,6 +39,7 @@
 (depends-on "magithub")
 (depends-on "markdown-mode")
 (depends-on "melpa")
+(depends-on "multiple-cursors")
 (depends-on "ntcmd")
 (depends-on "occidental-theme")
 (depends-on "pallet")
