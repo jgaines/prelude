@@ -80,6 +80,7 @@ initialization.
       c-tab-always-indent nil
       perl-tab-always-indent nil)
 
+;;; Tweak tuareg mode to the OCaml coding standards.
 (when (package-installed-p 'tuareg)
   (add-hook 'tuareg-mode-hook
 			(function (lambda ()

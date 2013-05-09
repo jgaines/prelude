@@ -17,3 +17,5 @@ savefile/
 /prelude-modules.el
 projectile.cache
 tramp
+.mc-lists.el
+abbrev_defs
