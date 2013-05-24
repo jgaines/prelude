@@ -19,7 +19,7 @@
 
 ;;; Run pallet-install to make sure we have all packages installed.
 (require 'pallet)
-(pallet-install)
+;(pallet-install)
 
 
 ;;; Add a few more auto-installed modes
