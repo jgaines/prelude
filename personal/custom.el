@@ -17,6 +17,7 @@
  '(tab-width 4)
  '(tool-bar-mode t)
  '(transient-mark-mode t)
+ '(visible-bell t)
  '(woman-locale "en_US"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
