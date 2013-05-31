@@ -70,6 +70,10 @@ initialization.
   (add-to-list 'auto-mode-alist
 			   '("\\.\\(cmd\\|bat\\)\\'" . ntcmd-mode)))
 
+(autoload 'cflow-mode "cflow-mode")
+(setq auto-mode-alist (append auto-mode-alist
+							  '(("\\.cflow$" . cflow-mode))))
+
 ;; These modes are part of the std load for 24.x
 (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
 (add-to-list 'auto-mode-alist '("_make\\'" . makefile-mode))
@@ -97,6 +101,13 @@ initialization.
 						(setq tuareg-rule-indent  tuareg-default-indent)
 						(setq tuareg-font-lock-symbols nil)
 						))))
+
+(autoload 'transpose-frame "transpose-frame")
+(autoload 'flip-frame "transpose-frame")
+(autoload 'flop-frame "transpose-frame")
+(autoload 'rotate-frame "transpose-frame")
+(autoload 'rotate-frame-clockwise "transpose-frame")
+(autoload 'rotate-frame-anticlockwise "transpose-frame")
 
 ;;; Use smex for M-x
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -173,6 +184,8 @@ case-insensitive comparrison."
   ;; http://gregorygrubbs.com/emacs/10-tips-emacs-windows/
   (setq shell-file-name "bash")
   (setq explicit-shell-file-name shell-file-name)
+  ;; Emacs gets this wrong.
+  (grep-apply-setting 'grep-use-null-device nil)
   ;; sshx or scpx
   ;; sshx seems more stable, so I use it for most things
   ;; scpx appears to work better for SCO
