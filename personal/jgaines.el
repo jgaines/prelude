@@ -166,7 +166,33 @@ case-insensitive comparrison."
 ;;; it would probably make sense to factor them out into separate
 ;;; files which we just require.
 (cond
- ;; ========== Cygwin specific setup code ==========
+ ;; ========== Cygwin Emacs ==========
+ ((and (eq window-system 'w32)
+	   (equal (getenv "SHELL") "/bin/bash"))
+
+  ;; sshx or scpx
+  ;; sshx seems more stable, so I use it for most things
+  ;; scpx appears to work better for SCO
+  ;; (eval-after-load 'tramp
+  ;;   '(progn
+  ;;      (setq tramp-default-method "sshx")))
+  (setq tramp-default-method "scpc")
+
+  (add-to-list 'load-path
+			   "/drive/c//Program Files (x86)/Gambit-C/v4.6.7-gcc/share/emacs/site-lisp")
+  (autoload 'gambit-inferior-mode
+	"gambit" "Hook Gambit mode into cmuscheme.")
+  (autoload 'gambit-mode
+	"gambit" "Hook Gambit mode into scheme.")
+  (add-hook 'inferior-scheme-mode-hook
+			(function gambit-inferior-mode))
+  (add-hook 'scheme-mode-hook
+			(function gambit-mode))
+  (setq scheme-program-name "gsi -:d-")
+
+  (server-start)
+  )
+ ;; ========== NTEmacs & Cygwin specific setup code ==========
  ((and (eq window-system 'w32)
        use-cygwin-flag
        (file-directory-p "c:/cygwin/bin"))
@@ -274,4 +300,6 @@ case-insensitive comparrison."
  ;; ========== Unix specific setup code ==========
  (t
   (setq tramp-default-method "scpc")
+
+  (server-start)
   ))
