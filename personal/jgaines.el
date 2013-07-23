@@ -6,11 +6,10 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 ;;; This makes sure the .emacs.d/elpa/archive lists exist:
-(when (not (assoc 'cygwin-mount package-archive-contents))
-  (package-refresh-contents))
+;; (when (not (assoc 'cygwin-mount package-archive-contents))
+;;   (package-refresh-contents))
 
 (defvar jgaines-required-packages '(carton pallet))
-
 
 ;;; Make sure carton & pallet are installed
 (dolist (p jgaines-required-packages)
@@ -212,6 +211,7 @@ case-insensitive comparrison."
   (setq explicit-shell-file-name shell-file-name)
   ;; Emacs gets this wrong.
   (grep-apply-setting 'grep-use-null-device nil)
+  (add-to-list 'Info-additional-directory-list "c:/cygwin/usr/share/info" t)
   ;; sshx or scpx
   ;; sshx seems more stable, so I use it for most things
   ;; scpx appears to work better for SCO
