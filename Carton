@@ -17,6 +17,7 @@
 (depends-on "cygwin-mount")
 (depends-on "dash")
 (depends-on "diminish")
+(depends-on "editorconfig")
 (depends-on "elisp-slime-nav")
 (depends-on "eshell-manual")
 (depends-on "exec-path-from-shell")
