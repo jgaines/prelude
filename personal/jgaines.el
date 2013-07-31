@@ -20,6 +20,8 @@
 (require 'pallet)
 ;(pallet-install)
 
+;;; Make sure this is loaded or Emacs is totally disabled.
+(require 'editorconfig)
 
 ;;; Add a few more auto-installed modes
 ;;; Format is (extension package mode)
