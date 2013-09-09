@@ -103,6 +103,9 @@ initialization.
 						(setq tuareg-font-lock-symbols nil)
 						))))
 
+(autoload 'julia-mode "julia-mode")
+(add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
+
 (autoload 'transpose-frame "transpose-frame")
 (autoload 'flip-frame "transpose-frame")
 (autoload 'flop-frame "transpose-frame")
