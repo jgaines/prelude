@@ -20,3 +20,4 @@ tramp
 .mc-lists.el
 abbrev_defs
 projectile-bookmarks.eld
+.cask/

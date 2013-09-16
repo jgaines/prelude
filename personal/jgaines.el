@@ -9,16 +9,18 @@
 ;; (when (not (assoc 'cygwin-mount package-archive-contents))
 ;;   (package-refresh-contents))
 
-(defvar jgaines-required-packages '(carton pallet))
+(defvar jgaines-required-packages '(cask pallet))
 
-;;; Make sure carton & pallet are installed
+;;; Make sure cask & pallet are installed
 (dolist (p jgaines-required-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
 ;;; Run pallet-install to make sure we have all packages installed.
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
 (require 'pallet)
-;(pallet-install)
+;;;(pallet-init)
 
 ;;; Make sure this is loaded or Emacs is totally disabled.
 (require 'editorconfig)
