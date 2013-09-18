@@ -84,6 +84,7 @@ by Prelude.")
 (setq gc-cons-threshold 50000000)
 
 ;; the core stuff
+(require 'prelude-el-get)
 (require 'prelude-packages)
 (require 'prelude-ui)
 (require 'prelude-core)

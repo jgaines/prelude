@@ -52,12 +52,12 @@
 
 (defun prelude-packages-installed-p ()
   "Check if all packages in `prelude-packages' are installed."
-  (every #'package-installed-p prelude-packages))
+  (every #'el-get-package-installed-p prelude-packages))
 
 (defun prelude-require-package (package)
   "Install PACKAGE unless already installed."
-  (unless (package-installed-p package)
-    (package-install package)))
+  (unless (el-get-package-installed-p package)
+    (el-get-install package)))
 
 (defun prelude-require-packages (packages)
   "Ensure PACKAGES are installed.
@@ -83,8 +83,8 @@ Missing packages are installed automatically."
 PACKAGE is installed only if not already present.  The file is opened in MODE."
   `(add-to-list 'auto-mode-alist
                 `(,extension . (lambda ()
-                                 (unless (package-installed-p ',package)
-                                   (package-install ',package))
+                                 (unless (el-get-package-installed-p ',package)
+                                   (el-get-install ',package))
                                  (,mode)))))
 
 (defvar prelude-auto-install-alist
@@ -118,11 +118,11 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
 ;; so we add them manually if it's already installed
-(when (package-installed-p 'markdown-mode)
+(when (el-get-package-installed-p 'markdown-mode)
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
-(when (package-installed-p 'pkgbuild-mode)
+(when (el-get-package-installed-p 'pkgbuild-mode)
   (add-to-list 'auto-mode-alist '("PKGBUILD\\'" . pkgbuild-mode)))
 
 ;; build auto-install mappings
@@ -131,7 +131,7 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
    (let ((extension (car entry))
          (package (cadr entry))
          (mode (cadr (cdr entry))))
-     (unless (package-installed-p package)
+     (unless (el-get-package-installed-p package)
        (prelude-auto-install extension package mode))))
  prelude-auto-install-alist)
 
