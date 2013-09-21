@@ -1,0 +1,7 @@
+(:name julia-mode
+       :description "Emacs mode for Julia language"
+       :type http
+       :url "https://raw.github.com/JuliaLang/julia/master/contrib/julia-mode.el"
+       :prepare (progn
+				  (autoload 'julia-mode "julia-mode")
+				  (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))))

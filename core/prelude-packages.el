@@ -33,17 +33,17 @@
 
 ;;; Code:
 (require 'cl)
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;(require 'package)
+;;(add-to-list 'package-archives
+;;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;; set package-user-dir to be relative to Prelude install path
-(setq package-user-dir (expand-file-name "elpa" prelude-dir))
-(package-initialize)
+;;(setq package-user-dir (expand-file-name "elpa" prelude-dir))
+;;(package-initialize)
 
 (defvar prelude-packages
   '(ace-jump-mode ack-and-a-half dash diminish elisp-slime-nav
     expand-region flx-ido flycheck gist
-    git-commit-mode gitconfig-mode gitignore-mode grizzl
+    git-modes grizzl
     guru-mode helm helm-projectile ido-ubiquitous
     key-chord magit move-text rainbow-mode
     smartparens smex undo-tree

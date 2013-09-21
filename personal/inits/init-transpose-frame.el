@@ -1,0 +1,6 @@
+(autoload 'transpose-frame "transpose-frame")
+(autoload 'flip-frame "transpose-frame")
+(autoload 'flop-frame "transpose-frame")
+(autoload 'rotate-frame "transpose-frame")
+(autoload 'rotate-frame-clockwise "transpose-frame")
+(autoload 'rotate-frame-anticlockwise "transpose-frame")

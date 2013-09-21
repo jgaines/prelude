@@ -1,0 +1,6 @@
+(:name editorconfig
+	   :website "http://editorconfig.org/"
+	   :description "EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs."
+	   :type github
+	   :pkgname "editorconfig/editorconfig-emacs"
+	   :features "editorconfig")

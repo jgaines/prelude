@@ -2,28 +2,36 @@
 
 (set-language-environment "English")
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-;;; This makes sure the .emacs.d/elpa/archive lists exist:
-;; (when (not (assoc 'cygwin-mount package-archive-contents))
-;;   (package-refresh-contents))
-
-(defvar jgaines-required-packages '(cask pallet))
-
-;;; Make sure cask & pallet are installed
-(dolist (p jgaines-required-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-;;; Run pallet-install to make sure we have all packages installed.
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(require 'pallet)
-;;;(pallet-init)
-
-;;; Make sure this is loaded or Emacs is totally disabled.
-(require 'editorconfig)
+(el-get 'sync 
+		'(Emacs-Groovy-Mode
+		  auto-complete
+		  cmake-mode
+		  crontab-mode
+		  cyberpunk-theme
+		  editorconfig
+		  eshell-manual
+		  fic-ext-mode
+		  flymake
+		  flymake-coffee
+		  flymake-d
+		  flymake-go
+		  flymake-lua
+		  flymake-python-pyflakes
+		  flymake-tuareg
+		  julia-mode
+		  js3-mode
+		  markdown-mode
+		  multiple-cursors
+		  nodejs-repl
+		  ntcmd
+		  pos-tip
+		  pyflakes
+		  python-info
+		  rainbow-delimiters
+		  sicp
+		  transpose-frame
+		  tuareg-mode
+		  yasnippet))
 
 ;;; Add a few more auto-installed modes
 ;;; Format is (extension package mode)
@@ -31,47 +39,19 @@
 ;;; installed, so if a package needs to be added to auto-mode-list
 ;;; manually, add a (when (package-installed-p 'foo) (add-to-list
 ;;; ...)) block after this.
-(defvar jgaines-auto-install-alist
-  '(
-    ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
-    ("\\.cmake\\'" cmake-mode cmake-mode)
-    ))
+;; (defvar jgaines-auto-install-alist
+;;   '(
+;;     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
+;;     ("\\.cmake\\'" cmake-mode cmake-mode)
+;;     ))
 
-(-each jgaines-auto-install-alist
-       (lambda (entry)
-         (let ((extension (car entry))
-               (package (cadr entry))
-               (mode (cadr (cdr entry))))
-           (unless (package-installed-p package)
-             (prelude-auto-install extension package mode)))))
-
-(when (package-installed-p 'cmake-mode)
-  (autoload 'cmake-mode "cmake-mode" "\
-Major mode for editing CMake files.
-
-The hook `cmake-mode-hook' is run with no args at mode
-initialization.
-
-\(fn)" t nil)
-  (add-to-list 'auto-mode-alist
-			   '("CMakeLists\\.txt\\'" . cmake-mode))
-  (add-to-list 'auto-mode-alist
-			   '("\\.cmake\\'" . cmake-mode)))
-
-(when (package-installed-p 'crontab-mode)
-  (add-to-list 'auto-mode-alist
-			   '("\\.cron\\(tab\\)?\\'" . crontab-mode))
-  (add-to-list 'auto-mode-alist
-			   '("cron\\(tab\\)?\\." . crontab-mode)))
-
-(when (package-installed-p 'groovy-mode)
-  (add-to-list 'auto-mode-alist
-			   '("\\.gradle\\'" groovy-mode groovy-mode)))
-
-;; ntcmd doesn't set up auto-modes
-(when (package-installed-p 'ntcmd)
-  (add-to-list 'auto-mode-alist
-			   '("\\.\\(cmd\\|bat\\)\\'" . ntcmd-mode)))
+;; (-each jgaines-auto-install-alist
+;;        (lambda (entry)
+;;          (let ((extension (car entry))
+;;                (package (cadr entry))
+;;                (mode (cadr (cdr entry))))
+;;            (unless (el-get-installed-p package)
+;;              (prelude-auto-install extension package mode)))))
 
 (autoload 'cflow-mode "cflow-mode")
 (setq auto-mode-alist (append auto-mode-alist
@@ -87,67 +67,11 @@ initialization.
       c-tab-always-indent nil
       perl-tab-always-indent nil)
 
-;;; Tweak tuareg mode to the OCaml coding standards.
-(when (package-installed-p 'tuareg)
-  (add-hook 'tuareg-mode-hook
-			(function (lambda ()
-						(setq tuareg-in-indent 0)
-						(setq tuareg-let-always-indent t)
-						(setq tuareg-let-indent tuareg-default-indent)
-						(setq tuareg-with-indent 0)
-						(setq tuareg-function-indent 0)
-						(setq tuareg-fun-indent 0)
-						;;(setq tuareg-parser-indent 0)
-						(setq tuareg-match-indent 0)
-						(setq tuareg-begin-indent tuareg-default-indent)
-						;;(setq tuareg-parse-indent tuareg-default-indent); .mll
-						(setq tuareg-rule-indent  tuareg-default-indent)
-						(setq tuareg-font-lock-symbols nil)
-						))))
-
-(autoload 'julia-mode "julia-mode")
-(add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
-
-(autoload 'transpose-frame "transpose-frame")
-(autoload 'flip-frame "transpose-frame")
-(autoload 'flop-frame "transpose-frame")
-(autoload 'rotate-frame "transpose-frame")
-(autoload 'rotate-frame-clockwise "transpose-frame")
-(autoload 'rotate-frame-anticlockwise "transpose-frame")
-
-;;; Use smex for M-x
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-
 ;;; Forces tabs to 8 spaces in all comint derived modes (shells,
 ;;; compiler, etc.)
 (defun force-tabs-to-eight ()
   (setq tab-width 8))
 (add-hook 'comint-mode-hook 'force-tabs-to-eight)
-
-;;; Multiple cursor support (oy, is this going to be the thing that
-;;; pulls me back from sublime-text2? :)
-(require 'multiple-cursors)
-
-;;; When you have an active region that spans multiple lines, the
-;;; following will add a cursor to each line:
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-
-;;; When you want to add multiple cursors not based on continuous
-;;; lines, but based on keywords in the buffer, use:
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c C-*") 'mc/mark-all-like-this)
-;;; First mark the word, then add more cursors.
-
-;;; To get out of multiple-cursors-mode, press <return> or C-g. The
-;;; latter will first disable multiple regions before disabling
-;;; multiple cursors. If you want to insert a newline in
-;;; multiple-cursors-mode, use C-j.
 
 ;;; Major environment settings here, hopefully I can limit Cygwin
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
@@ -206,8 +130,8 @@ case-insensitive comparrison."
   ;; http://gregorygrubbs.com/emacs/10-tips-emacs-windows/
   (add-to-list 'exec-path "c:/cygwin/bin" nil 'path-equal)
   (add-to-list 'exec-path "c:/cygwin/usr/local/bin" nil 'path-equal)
-  (when (not (package-installed-p 'cygwin-mount))
-    (package-install 'cygwin-mount))
+  (when (not (el-get-package-installed-p 'cygwin-mount))
+    (el-get-install 'cygwin-mount))
   (require 'cygwin-mount)              ; lets Emacs grok Cygwin mounts
   (cygwin-mount-activate)
   ;; have to fix paths for pylint or it barfs
