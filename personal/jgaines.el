@@ -1,37 +1,17 @@
 ;;; jgaines.el --- personal settings common to all platforms
 
+;;; Commentary:
+
+;;; Code:
+
 (set-language-environment "English")
 
-(el-get 'sync 
-		'(Emacs-Groovy-Mode
-		  auto-complete
-		  cmake-mode
-		  crontab-mode
-		  cyberpunk-theme
-		  editorconfig
-		  eshell-manual
-		  fic-ext-mode
-		  flymake
-		  flymake-coffee
-		  flymake-d
-		  flymake-go
-		  flymake-lua
-		  flymake-python-pyflakes
-		  flymake-tuareg
-		  julia-mode
-		  js3-mode
-		  markdown-mode
-		  multiple-cursors
-		  nodejs-repl
-		  ntcmd
-		  pos-tip
-		  pyflakes
-		  python-info
-		  rainbow-delimiters
-		  sicp
-		  transpose-frame
-		  tuareg-mode
-		  yasnippet))
+(setq prelude-guru nil)
+(menu-bar-mode +1)
+(tool-bar-mode +1)
+(load-theme 'cyberpunk t)
+(blink-cursor-mode nil)
+(column-number-mode t)
 
 ;;; Add a few more auto-installed modes
 ;;; Format is (extension package mode)
