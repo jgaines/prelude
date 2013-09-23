@@ -6,32 +6,18 @@
 
 (set-language-environment "English")
 
+(require 'prelude-editor)
+
+;; Override some Prelude settings:
+;; turn off global guru-mode
 (setq prelude-guru nil)
+;; turn menu back on
 (menu-bar-mode +1)
-(tool-bar-mode +1)
+;; use cyperpunk theme
 (load-theme 'cyberpunk t)
-(blink-cursor-mode nil)
-(column-number-mode t)
-
-;;; Add a few more auto-installed modes
-;;; Format is (extension package mode)
-;;; NOTE: This does not do anything if the package is already
-;;; installed, so if a package needs to be added to auto-mode-list
-;;; manually, add a (when (package-installed-p 'foo) (add-to-list
-;;; ...)) block after this.
-;; (defvar jgaines-auto-install-alist
-;;   '(
-;;     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
-;;     ("\\.cmake\\'" cmake-mode cmake-mode)
-;;     ))
-
-;; (-each jgaines-auto-install-alist
-;;        (lambda (entry)
-;;          (let ((extension (car entry))
-;;                (package (cadr entry))
-;;                (mode (cadr (cdr entry))))
-;;            (unless (el-get-installed-p package)
-;;              (prelude-auto-install extension package mode)))))
+;; set fringe (gutter) back to 8 pixels
+(if (fboundp 'fringe-mode)
+    (fringe-mode 8))
 
 (autoload 'cflow-mode "cflow-mode")
 (setq auto-mode-alist (append auto-mode-alist
@@ -57,11 +43,12 @@
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
 ;;; anything in the environment, don't use Cygwin.
 (defvar use-cygwin-flag (not (getenv "IGNORE_CYGWIN"))
-  "By default, use Cygwin.")
+  "Non-nil means use Cygwin.")
 
 (defun path-equal (path1 path2)
-  "Compare two paths for equality on Windows it also does a
-case-insensitive comparrison."
+  "Compare PATH1 and PATH2 for equality.
+
+On Windows it also does a case-insensitive comparison."
   (and (stringp path1) ; make sure they're both strings
        (stringp path2)
        (or
@@ -76,7 +63,7 @@ case-insensitive comparrison."
 ;;; it would probably make sense to factor them out into separate
 ;;; files which we just require.
 (cond
- ;; ========== Cygwin Emacs ==========
+ ;; ========== Cygwin Emacs-w32 ==========
  ((and (eq window-system 'w32)
 	   (equal (getenv "SHELL") "/bin/bash"))
 
@@ -88,8 +75,10 @@ case-insensitive comparrison."
   ;;      (setq tramp-default-method "sshx")))
   (setq tramp-default-method "scpc")
 
-  (add-to-list 'load-path
-			   "/drive/c//Program Files (x86)/Gambit-C/v4.6.7-gcc/share/emacs/site-lisp")
+  (let ((gambit-path "/drive/c/Program Files (x86)/Gambit-C/v4.6.7-gcc/"))
+	(add-to-list 'load-path
+				 (expand-file-name "share/emacs/site-lisp" gambit-path))
+	(add-to-list 'exec-path (expand-file-name "bin" gambit-path) nil 'path-equal))
   (autoload 'gambit-inferior-mode
 	"gambit" "Hook Gambit mode into cmuscheme.")
   (autoload 'gambit-mode
@@ -214,3 +203,7 @@ case-insensitive comparrison."
 
   (server-start)
   ))
+
+(provide 'jgaines)
+
+;;; jgaines.el ends here

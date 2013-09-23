@@ -1,10 +1,14 @@
-;;; init-Emacs-Groovy-Mode.el --- description
+# -*- mode: snippet -*-
+# name: emacs lisp module skeleton
+# key: skel
+# --
+;;; `(file-name-nondirectory (buffer-file-name))` --- ${description}
 
-;; Copyright (C) 2013 John Gaines, Jr.
+;; Copyright (C) `(format-time-string "%Y")` ${1:`(user-full-name)`}
 
-;; Author: John Gaines, Jr.
-;; Maintainer: John Gaines, Jr.
-;; Created: Mon Sep 23 14:55:34 2013
+;; Author: $1
+;; Maintainer: $1
+;; Created: `(current-time-string)` (ignored)
 
 ;; This file is not part of GNU Emacs.
 
@@ -23,13 +27,14 @@
 
 ;;; Commentary:
 
-;; TODO: Should probably move this into el-get-packages.el.
+;; Replace this with commentary pertaining to your module.
+;; This skeleton adapted from "Conventional Headers for Emacs Libraries" at:
+;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html
 
 ;;; Code:
 
-(add-to-list 'auto-mode-alist
-			 '("\\.gradle\\'" groovy-mode groovy-mode))
+$0
 
-(provide 'init-Emacs-Groovy-Mode)
+(provide '`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`)
 
-;;; init-Emacs-Groovy-Mode.el ends here
+;;; `(file-name-nondirectory (buffer-file-name))` ends here

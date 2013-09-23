@@ -1,10 +1,10 @@
-;;; init-Emacs-Groovy-Mode.el --- description
+;;; init-yasnippet.el --- Initialize yasnippet.
 
 ;; Copyright (C) 2013 John Gaines, Jr.
 
 ;; Author: John Gaines, Jr.
 ;; Maintainer: John Gaines, Jr.
-;; Created: Mon Sep 23 14:55:34 2013
+;; Created: Mon Sep 23 15:13:15 2013 (ignored)
 
 ;; This file is not part of GNU Emacs.
 
@@ -23,13 +23,14 @@
 
 ;;; Commentary:
 
-;; TODO: Should probably move this into el-get-packages.el.
+;; Replace this with commentary pertaining to your module.
+;; This skeleton adapted from "Conventional Headers for Emacs Libraries" at:
+;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html
 
 ;;; Code:
 
-(add-to-list 'auto-mode-alist
-			 '("\\.gradle\\'" groovy-mode groovy-mode))
+(yas/global-mode 1)
 
-(provide 'init-Emacs-Groovy-Mode)
+(provide 'init-yasnippet)
 
-;;; init-Emacs-Groovy-Mode.el ends here
+;;; init-yasnippet.el ends here

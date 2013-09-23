@@ -1,3 +1,10 @@
+;;; init-cmake-mode.el --- Initialization for cmake-mode.
+
+;;; Commentary:
+;; Set up autoload and filename associations for cmake-mode.
+
+;;; Code:
+
 (autoload 'cmake-mode "cmake-mode" "\
 Major mode for editing CMake files.
 
@@ -10,3 +17,7 @@ initialization.
 			 '("CMakeLists\\.txt\\'" . cmake-mode))
 (add-to-list 'auto-mode-alist
 			 '("\\.cmake\\'" . cmake-mode))
+
+(provide 'init-cmake-mode)
+
+;;; init-cmake-mode.el ends here
