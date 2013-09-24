@@ -8,7 +8,6 @@
 
 ;; Author: $1
 ;; Maintainer: $1
-;; Created: `(current-time-string)` (ignored)
 
 ;; This file is not part of GNU Emacs.
 
@@ -27,9 +26,11 @@
 
 ;;; Commentary:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Replace this with commentary pertaining to your module.
 ;; This skeleton adapted from "Conventional Headers for Emacs Libraries" at:
 ;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Code:
 

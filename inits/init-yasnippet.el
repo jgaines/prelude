@@ -4,7 +4,6 @@
 
 ;; Author: John Gaines, Jr.
 ;; Maintainer: John Gaines, Jr.
-;; Created: Mon Sep 23 15:13:15 2013 (ignored)
 
 ;; This file is not part of GNU Emacs.
 
@@ -23,9 +22,8 @@
 
 ;;; Commentary:
 
-;; Replace this with commentary pertaining to your module.
-;; This skeleton adapted from "Conventional Headers for Emacs Libraries" at:
-;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html
+;; For now, just turn on yasnippet globally.  Might want to restrict
+;; it just to modes for which I have snippet sets.
 
 ;;; Code:
 

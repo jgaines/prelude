@@ -1,10 +1,9 @@
-;;; init-Emacs-Groovy-Mode.el --- description
+;;; init-Emacs-Groovy-Mode.el --- Initialize Emacs-Groovy-Mode.
 
 ;; Copyright (C) 2013 John Gaines, Jr.
 
 ;; Author: John Gaines, Jr.
 ;; Maintainer: John Gaines, Jr.
-;; Created: Mon Sep 23 14:55:34 2013
 
 ;; This file is not part of GNU Emacs.
 
