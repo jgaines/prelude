@@ -12,7 +12,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(defvar el-get-packages-file 
+(defvar el-get-packages nil
+  "List of packages for el-get to load.")
+
+(defvar el-get-packages-file
   (expand-file-name "el-get-packages.el" prelude-dir)
   "This file defines the list of packages for el-get to load.
 
@@ -30,13 +33,11 @@ list of packages that will be loaded by el-get.")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 (setq el-get-user-package-directory "~/.emacs.d/inits")
 
-(defvar el-get-packages nil
-  "List of packages for el-get to load.")
-
 (when (file-exists-p el-get-packages-file)
   (load el-get-packages-file))
 
-(el-get el-get-packages)
+(el-get nil el-get-packages)
+(el-get 'sync)
 
 (provide 'prelude-el-get)
 

@@ -13,11 +13,22 @@
 (setq prelude-guru nil)
 ;; turn menu back on
 (menu-bar-mode +1)
-;; use cyperpunk theme
-(load-theme 'cyberpunk t)
+;; use jgaines theme (a tweaked cyperpunk theme)
+(require 'jgaines-theme)
+(load-theme 'jgaines t)
 ;; set fringe (gutter) back to 8 pixels
 (if (fboundp 'fringe-mode)
     (fringe-mode 8))
+
+;; turn on rainbow delimiters in all programming modes
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; some programming modes need their own hooks called
+(if (fboundp 'd-mode)
+	(add-hook 'd-mode-hook 'rainbow-delimiters-mode))
+(if (fboundp 'erlang-mode)
+	(add-hook 'erlang-mode-hook 'rainbow-delimiters-mode))
+(if (fboundp 'js3-mode)
+	(add-hook 'js3-mode-hook 'rainbow-delimiters-mode))
 
 (autoload 'cflow-mode "cflow-mode")
 (setq auto-mode-alist (append auto-mode-alist
@@ -33,9 +44,10 @@
       c-tab-always-indent nil
       perl-tab-always-indent nil)
 
-;;; Forces tabs to 8 spaces in all comint derived modes (shells,
-;;; compiler, etc.)
+;; Force tabs to 8 spaces in all comint derived modes.  (shells,
+;; compiler, etc.)
 (defun force-tabs-to-eight ()
+  "Set tab to 8 spaces."
   (setq tab-width 8))
 (add-hook 'comint-mode-hook 'force-tabs-to-eight)
 
