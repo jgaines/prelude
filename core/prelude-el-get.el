@@ -3,11 +3,16 @@
 ;;; Commentary:
 ;;; Code:
 
-(message "Starting el-get init")
+(message "starting prelude-el-get")
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+ (setq
+  package-archives
+  '(("ELPA" . "http://tromey.com/elpa/")
+    ("gnu" . "http://elpa.gnu.org/packages/")
+    ("marmalade" . "http://marmalade-repo.org/packages/")
+    ("melpa" . "http://melpa.milkbox.net/packages/")
+    ("SC"   . "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -36,8 +41,11 @@ list of packages that will be loaded by el-get.")
 (when (file-exists-p el-get-packages-file)
   (load el-get-packages-file))
 
+(message "calling el-get with list of packages")
 (el-get nil el-get-packages)
+(message "calling el-get 'sync")
 (el-get 'sync)
+(message "done with prelude-el-get")
 
 (provide 'prelude-el-get)
 

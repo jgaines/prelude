@@ -1,0 +1,6 @@
+(:name emacs
+       :description "Dummy package to satisfy emacs dependencies in auto generated recipes."
+       :builtin "20"
+       :type http
+       :url "http://jgaines.com"
+       :features emacs)
