@@ -32,7 +32,7 @@
 
 (autoload 'cflow-mode "cflow-mode")
 (setq auto-mode-alist (append auto-mode-alist
-							  '(("\\.cflow$" . cflow-mode))))
+			      '(("\\.cflow$" . cflow-mode))))
 
 ;; These modes are part of the std load for 24.x
 (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
@@ -43,6 +43,8 @@
       c-basic-offset 4
       c-tab-always-indent nil
       perl-tab-always-indent nil)
+(add-hook 'c-mode-hook (lambda ()
+			 (setq tab-width 4)))
 
 ;; Force tabs to 8 spaces in all comint derived modes.  (shells,
 ;; compiler, etc.)
@@ -50,6 +52,16 @@
   "Set tab to 8 spaces."
   (setq tab-width 8))
 (add-hook 'comint-mode-hook 'force-tabs-to-eight)
+
+(defun goto-matching-bracket (arg)
+  "Go to the matching bracket if on a bracket, otherwise insert % * ARG.
+
+vi style of % jumping to matching bracket."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+	(t (self-insert-command (or arg 1)))))
+(global-set-key (kbd "%") 'goto-matching-bracket)
 
 ;;; Major environment settings here, hopefully I can limit Cygwin
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
