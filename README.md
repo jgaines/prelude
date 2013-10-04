@@ -25,20 +25,18 @@ personal junk from the el-get changes just yet.
 
 Pretty much everything in the personal directory should be tossed
 (though I do have a few things in jgaines.el that might be worth
-salvaging).  And the file el-get-packages.el is intended as a your
-personal package list (above what Prelude requires).
+salvaging).  And the file el-get-packages.el is intended as your
+personal package list (above what Prelude requires).  I also pulled
+prelude-modules.el into the repo so it would carry over between
+machines.
 
-I'm still not real happy with the core/prelude-el-get.el code, it's an
-ugly hack to call el-get with a list of packages followed by (el-get
-`sync), but it appears you have to call (el-get `sync) to get it to
-initialize all the existing packages.  Further messing about is
-required to get it to be a little less dee dee dee (and thus load
-faster).
-
-The el-get integration is still a little rough during initial startup
-of a fresh install.  I had to manually call el-get-emacswiki-refresh
-and el-get-elpa-build-local-recipes.  I also had to reload emacs a lot
-to get all the packages in my list to install without erroring out.
+I'm still not real happy with the core/prelude-el-get.el code.  The
+el-get integration is still a little rough during initial start up of
+a fresh install.  I still have to reload Emacs about half a dozen
+times to get all the packages in my list to install without errors.
+I'm not sure if juggling the order of the packages in
+el-get-packages.el would help, but for now, it works well enough for
+my purposes.
 
 ## Original Documentation
 
