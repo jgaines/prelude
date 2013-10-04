@@ -43,6 +43,16 @@ list of packages that will be loaded by el-get.")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 (setq el-get-user-package-directory "~/.emacs.d/inits")
 
+(require 'package)
+(setq
+ package-archives
+ '(("ELPA" . "http://tromey.com/elpa/")
+   ("gnu" . "http://elpa.gnu.org/packages/")
+   ("marmalade" . "http://marmalade-repo.org/packages/")
+   ("melpa" . "http://melpa.milkbox.net/packages/")
+   ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
+(package-initialize t)
+
 (when (file-exists-p el-get-packages-file)
   (load el-get-packages-file))
 
