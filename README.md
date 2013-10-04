@@ -1,5 +1,46 @@
-Emacs Prelude
-=============
+Emacs El-Get Prelude
+====================
+
+This is a hacked up version of Bozhidar Batsov's original Prelude,
+which lives at: https://github.com/bbatsov/prelude
+
+Originally all my changes were just personal settings in the jgaines
+branch so I could easily pull my full setup from github into any other
+machine.
+
+I'm currently working in the el-get branch to make Prelude work with
+el-get as the package manager instead of the elpa package manager.  My
+motivation is simply that el-get is a super-set of elpa so it makes it
+easier to incorporate packages from sources other than official elpa
+style sites.
+
+Eventually I'll merge el-get back into jgaines and use that as my main
+branch again.
+
+## Apologies and Warts
+
+I apologize in advance to anyone who might be interested in this fork,
+as I'm a bit too lazy to clean up the repo properly to isolate my
+personal junk from the el-get changes just yet.
+
+Pretty much everything in the personal directory should be tossed
+(though I do have a few things in jgaines.el that might be worth
+salvaging).  And the file el-get-packages.el is intended as a your
+personal package list (above what Prelude requires).
+
+I'm still not real happy with the core/prelude-el-get.el code, it's an
+ugly hack to call el-get with a list of packages followed by (el-get
+`sync), but it appears you have to call (el-get `sync) to get it to
+initialize all the existing packages.  Further messing about is
+required to get it to be a little less dee dee dee (and thus load
+faster).
+
+The el-get integration is still a little rough during initial startup
+of a fresh install.  I had to manually call el-get-emacswiki-refresh
+and el-get-elpa-build-local-recipes.  I also had to reload emacs a lot
+to get all the packages in my list to install without erroring out.
+
+## Original Documentation
 
 Prelude is an Emacs distribution that aims to enhance the default
 Emacs experience.  Prelude alters a lot of the default settings,
