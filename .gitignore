@@ -14,7 +14,6 @@ ede-projects.el
 places
 .smex-items
 savefile/
-/prelude-modules.el
 projectile.cache
 tramp
 .mc-lists.el
