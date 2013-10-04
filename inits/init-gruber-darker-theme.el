@@ -1,4 +1,4 @@
-;;; init-cyberpunk-theme.el --- Initialize cyberpunk-theme.
+;;; init-gruber-darker-theme.el --- Initialize gruber-darker-theme.
 
 ;; Copyright (C) 2013 John Gaines, Jr.
 
@@ -27,8 +27,8 @@
 
 ;;; Code:
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/cyberpunk-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/gruber-darker-theme")
 
-(provide 'init-cyberpunk-theme)
+(provide 'init-gruber-darker-theme)
 
-;;; init-cyberpunk-theme.el ends here
+;;; init-gruber-darker-theme.el ends here

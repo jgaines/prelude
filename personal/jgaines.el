@@ -63,6 +63,15 @@ vi style of % jumping to matching bracket."
 	(t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "%") 'goto-matching-bracket)
 
+;; Set this again because el-get resets it after loading package.
+(setq
+ package-archives
+ '(("ELPA" . "http://tromey.com/elpa/")
+   ("gnu" . "http://elpa.gnu.org/packages/")
+   ("marmalade" . "http://marmalade-repo.org/packages/")
+   ("melpa" . "http://melpa.milkbox.net/packages/")
+   ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
+
 ;;; Major environment settings here, hopefully I can limit Cygwin
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
 ;;; anything in the environment, don't use Cygwin.

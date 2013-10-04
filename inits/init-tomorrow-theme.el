@@ -1,4 +1,4 @@
-;;; init-cyberpunk-theme.el --- Initialize cyberpunk-theme.
+;;; init-tomorrow-theme.el --- Initialize tomorrow-theme.
 
 ;; Copyright (C) 2013 John Gaines, Jr.
 
@@ -22,13 +22,14 @@
 
 ;;; Commentary:
 
-;; This is necessary because el-get doesn't handle typical theme
-;; autoloads properly if they're installed from non-elpa sources.
+;; This is necessary because we're pulling in tomorrow-theme from
+;; github and it's a multi-editor theme set, so it stores the themes
+;; under a subdirectory "GNU Emacs".
 
 ;;; Code:
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/cyberpunk-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/tomorrow-theme/GNU Emacs")
 
-(provide 'init-cyberpunk-theme)
+(provide 'init-tomorrow-theme)
 
-;;; init-cyberpunk-theme.el ends here
+;;; init-tomorrow-theme.el ends here
