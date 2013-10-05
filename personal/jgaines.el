@@ -19,6 +19,7 @@
 ;; set fringe (gutter) back to 8 pixels
 (if (fboundp 'fringe-mode)
     (fringe-mode 8))
+(setq whitespace-line-column 132) ;; limit line length
 
 ;; turn on rainbow delimiters in all programming modes
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
