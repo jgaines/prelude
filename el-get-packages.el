@@ -10,6 +10,8 @@
 	cmake-mode
 	crontab-mode
 	editorconfig
+	elixir
+	elixir-mix
 	eshell-manual
 	fic-ext-mode
 	julia-mode
