@@ -21,6 +21,7 @@
 	nodejs-repl
 	ntcmd
 	pos-tip
+	pure-mode
 	pyflakes
 	python-info
 	rainbow-delimiters

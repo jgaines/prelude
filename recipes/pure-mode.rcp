@@ -1,0 +1,18 @@
+(:name pure-mode
+       :type http
+       :url "https://bitbucket.org/purelang/pure-lang/raw/tip/pure/etc/pure-mode.el.in"
+       :localname "pure-mode.el"
+       :description "An Emacs mode to edit Pure (the language) code."
+       :load-path (".")
+       :prepare
+       (progn
+         (autoload 'pure-mode "pure-mode" "Major mode for editing Pure code" t)
+         (autoload 'run-pure "pure-mode" "Start Pure interpreter" t)
+         (autoload 'pure-run "pure-mode" "Start Pure interpreter" t)
+         (autoload 'pure-run-script "pure-mode" "Run script in Pure interpreter " t)
+         (autoload 'pure-scratchpad "pure-mode" "Open Pure interpreter scratchpad" t)
+         (autoload 'pure-send-string "pure-mode" "Send string to Pure interpreter" t)
+	 (setq auto-mode-alist
+	       (cons '("\\.pure\\(rc\\)?$" . pure-mode) auto-mode-alist))
+
+))

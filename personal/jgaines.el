@@ -81,6 +81,27 @@ vi style of % jumping to matching bracket."
 		  '("\\`lmm3\\'" nil "scpx"))
      ))
 
+(eval-after-load 'pure-mode
+  '(progn
+     (add-hook 'pure-mode-hook
+	       (lambda ()
+		 (require 'hideshow)
+		 (turn-on-font-lock)
+		 (hs-minor-mode)))
+     (add-hook 'pure-eval-mode-hook
+	       (lambda ()
+		 (turn-on-font-lock)
+		 (define-key pure-eval-mode-map [up] 'comint-previous-input)
+		 (define-key pure-eval-mode-map [down] 'comint-next-input)))
+     (global-set-key "\C-c\M-p" 'run-pure)
+     (global-set-key "\C-x\M-p" 'pure-scratchpad)))
+
+(eval-after-load 'go-mode
+  '(progn
+     (add-hook 'go-mode-hook
+	       (lambda ()
+		 (setq tab-width 4)))))
+
 ;;; Major environment settings here, hopefully I can limit Cygwin
 ;;; vs. Windoze config issues to here. If IGNORE_CYGWIN is set to
 ;;; anything in the environment, don't use Cygwin.
