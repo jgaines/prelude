@@ -117,6 +117,11 @@ On Windows it also does a case-insensitive comparison."
   ;;      (setq tramp-default-method "sshx")))
   ;;(setq tramp-default-method "scpx")
 
+  (setq vc-ignore-dir-regexp
+        (format "\\(%s\\)\\|\\(%s\\)"
+                vc-ignore-dir-regexp
+                tramp-file-name-regexp))
+
   (let ((gambit-path "/drive/c/Program Files (x86)/Gambit-C/v4.6.7-gcc/"))
     (add-to-list 'load-path
 		 (expand-file-name "share/emacs/site-lisp" gambit-path))
