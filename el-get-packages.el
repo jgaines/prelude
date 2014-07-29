@@ -16,6 +16,7 @@
 	fic-ext-mode
 	julia-mode
 	js3-mode
+        haxe-mode
 	markdown-mode
 	multiple-cursors
 	nodejs-repl
