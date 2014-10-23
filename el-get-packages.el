@@ -5,8 +5,9 @@
 ;;; Code:
 
 (setq el-get-packages
-      '(Emacs-Groovy-Mode
+      '(
 	auto-complete
+        ;cider-nrepl
 	cmake-mode
 	crontab-mode
 	editorconfig
@@ -14,6 +15,7 @@
 	elixir-mix
 	eshell-manual
 	fic-ext-mode
+        groovy-emacs-mode
 	julia-mode
 	js3-mode
         haxe-mode
