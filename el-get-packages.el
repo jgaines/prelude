@@ -5,10 +5,9 @@
 ;;; Code:
 
 (setq el-get-packages
-      '(
-	auto-complete
-        cider
+      '(cider
 	cmake-mode
+        company-mode
 	crontab-mode
 	editorconfig
 	elixir
