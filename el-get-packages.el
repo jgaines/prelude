@@ -7,7 +7,7 @@
 (setq el-get-packages
       '(
 	auto-complete
-        ;cider-nrepl
+        cider
 	cmake-mode
 	crontab-mode
 	editorconfig

@@ -23,13 +23,6 @@
 
 ;; turn on rainbow delimiters in all programming modes
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-;; some programming modes need their own hooks called
-(if (fboundp 'd-mode)
-	(add-hook 'd-mode-hook 'rainbow-delimiters-mode))
-(if (fboundp 'erlang-mode)
-	(add-hook 'erlang-mode-hook 'rainbow-delimiters-mode))
-(if (fboundp 'js3-mode)
-	(add-hook 'js3-mode-hook 'rainbow-delimiters-mode))
 
 (autoload 'cflow-mode "cflow-mode")
 (setq auto-mode-alist (append auto-mode-alist

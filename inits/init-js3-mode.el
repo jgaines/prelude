@@ -1,6 +1,6 @@
-;;; init-Emacs-Groovy-Mode.el --- Initialize Emacs-Groovy-Mode.
+;;; init-js3-mode.el --- js3-mode is JavaScript mode.
 
-;; Copyright (C) 2013 John Gaines, Jr.
+;; Copyright (C) 2014 John Gaines, Jr.
 
 ;; Author: John Gaines, Jr.
 ;; Maintainer: John Gaines, Jr.
@@ -22,13 +22,15 @@
 
 ;;; Commentary:
 
-;; TODO: Should probably move this into el-get-packages.el.
+;;
 
 ;;; Code:
 
-(add-to-list 'auto-mode-alist
-			 '("\\.gradle\\'" groovy-mode groovy-mode))
+(add-hook 'js3-mode-hook
+          (function (lambda ()
+                      (rainbow-delimiters-mode +1)
+                      (smartparens-strict-mode +1))))
 
-(provide 'init-Emacs-Groovy-Mode)
+(provide 'init-js3-mode)
 
-;;; init-Emacs-Groovy-Mode.el ends here
+;;; init-js3-mode.el ends here
