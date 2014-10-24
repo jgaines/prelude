@@ -55,7 +55,7 @@ vi style of % jumping to matching bracket."
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
 	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
 	(t (self-insert-command (or arg 1)))))
-(global-set-key (kbd "%") 'goto-matching-bracket)
+(global-set-key (kbd "C-%") 'goto-matching-bracket)
 
 ;; Set this again because el-get resets it after loading package.
 (setq

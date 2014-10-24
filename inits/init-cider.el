@@ -31,9 +31,20 @@
                       (rainbow-delimiters-mode +1)
                       (smartparens-strict-mode +1))))
 
+(eval-after-load "cider"
+  '(progn
+     ;; remove shift-return from prelude's keymap
+     (define-key prelude-mode-map [(shift return)] nil)
+     ;; add it to cider repl so shift-return == C-j
+     (define-key
+       cider-repl-mode-map
+       [(shift return)]
+       'cider-repl-newline-and-indent)))
+
 (setq cider-interactive-eval-result-prefix ";; => ")
 (setq cider-repl-result-prefix ";; => ")
 (setq cider-repl-use-clojure-font-lock t)
+(setq cider-auto-select-error-buffer nil)
 
 (provide 'init-cider)
 
